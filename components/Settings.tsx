@@ -1,6 +1,9 @@
 import styled from '@emotion/styled'
 import Link from 'next/link';
 import Picker from './Picker';
+import OrderPicker from './OrderPicker';
+import PlayButton from './PlayButton';
+
 const width = 699;
 const height = 660;
 
@@ -33,7 +36,12 @@ const Settings = () => {
       <Picker values={amounts} name='amounts'/>
       <p>Значения</p>
       <Picker values={values} name='values'/>
-      <Link href={'/game'}>Играть</Link>
+      <OrderPicker/>
+      <Link href={'/game'}>
+        <PlayButton>
+          Играть
+        </PlayButton>
+      </Link>
     </SettingsHolder>
   </SettingsWrapper>
   )
