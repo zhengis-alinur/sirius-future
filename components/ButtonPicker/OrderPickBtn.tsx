@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { yellow } from '../constants/styles';
+import { yellow } from '../../constants/styles';
 
 const PickBtn = ({id, label, className, name}) => {
   return(

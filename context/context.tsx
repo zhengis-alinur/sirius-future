@@ -1,10 +1,17 @@
 import { createContext } from "react";
 
-export const GameContext = createContext(
+export const initialValues = {
+  amount: 5,
+  ranges: 10,
+  order: 'asc',
+  gameTheme: 0
+}
+
+export const GameContext = createContext(initialValues);
+
+export const ThemeContext = createContext(
   {
-    amount: 2,
-    ranges: 5,
-    order: 'asc',
-    gameTheme: 0
+    theme: 0,
+    setTheme: () => {}
   }
 );

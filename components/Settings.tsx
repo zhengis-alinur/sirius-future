@@ -1,12 +1,9 @@
 import styled from '@emotion/styled'
 import Link from 'next/link';
-import Picker from './Picker';
-import OrderPicker from './OrderPicker';
+import Picker from './RadioPicker/Picker';
+import OrderPicker from './ButtonPicker/OrderPicker';
 import SFButton from './SFButton';
 import { darkblue, lightblue } from '../constants/styles';
-import { GameContext } from "../context/context"
-import { useContext } from 'react';
-import assets from '../constants/assets';
 
 const width = 699;
 const height = 660;
@@ -15,7 +12,6 @@ const amount = ['2','3','4','5',];
 const ranges = ['A','9','19','50','99','999',];
 const orders = [{order: 'asc', label: 'По возрастанию'}, {order: 'desc', label: 'По убыванию'}];
 
-//cюда же ордерпикер
 const SettingsWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -36,10 +32,6 @@ const SettingsHolder = styled.div`
 `
 
 const Settings = () => {
-  const gameContext = useContext(GameContext);
-  const configureGame = () => {
-    gameContext.gameTheme = Math.floor(Math.random()*(assets.length+1));
-  }
   return(
   <SettingsWrapper>
     <SettingsHolder>
@@ -47,7 +39,7 @@ const Settings = () => {
       <Picker title='Значения' values={ranges} name='ranges'/>
       <OrderPicker values={orders} name='order'/>
       <Link href={'/game'}>
-        <SFButton onClick={configureGame}>
+        <SFButton >
           Играть
         </SFButton>
       </Link>

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import OrderPickBtn from './OrderPickBtn';
 import { useContext } from 'react';
-import { GameContext } from '../context/context';
+import { GameContext } from '../../context/context';
 
 const OrderPickerWrapper = styled.div`
   display: flex;

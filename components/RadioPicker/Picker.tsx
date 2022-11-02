@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import LabelStyled from './Label';
-import { yellow } from '../constants/styles';
+import { yellow } from '../../constants/styles';
 import { useContext } from 'react';
-import { GameContext } from '../context/context';
+import { GameContext } from '../../context/context';
 
 const PickerWrapper = styled.div`
   display: flex;

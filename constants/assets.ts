@@ -1,18 +1,18 @@
 const assets = [
   { 
-    'theme': 'winter',
+    'name': 'winter',
     'items': ['1.png', '2.png', '3.png', '4.png'],
     'panel': 'panel.png',
     'background': 'background.png',
   },
   { 
-    'theme': 'cooking',
+    'name': 'cooking',
     'items': ['1.png', '2.png', '3.png', '4.png'],
     'panel': 'panel.png',
     'background': 'background.png',
   },
   { 
-    'theme': 'money',
+    'name': 'money',
     'items': ['1.png', '2.png', '3.png', '4.png'],
     'panel': 'panel.png',
     'background': 'background.png',
