@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { yellow } from '../constants/styles';
 
-const PickBtn = ({id, label, className}) => {
+const PickBtn = ({id, label, className, name}) => {
   return(
     <div className={className}>
-      <input type="radio" name='order' id={id} />
+      <input type="radio" name={name} id={id}/>
       <label htmlFor={id}>{label}</label>
     </div>
   )
@@ -27,7 +28,7 @@ const OrderPickBtn = styled(PickBtn)`
     justify-content: center;
     width: 270px;
     height: 45px;
-    background-color: #FFD748;
+    background-color: ${yellow};
     opacity: 0.5;
     border-radius: 20px;
   }

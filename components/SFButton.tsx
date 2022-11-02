@@ -1,12 +1,13 @@
 import styled from '@emotion/styled'
+import { green } from '../constants/styles';
 
-const PlayButton = styled.div`
+const SFButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #38DF7A;
+  background-color: ${green};
   border-radius: 20px;
   width: 260px;
   height: 60px;
 `
-export default PlayButton;
+export default SFButton;

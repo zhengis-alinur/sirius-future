@@ -1,14 +1,18 @@
 import styled from '@emotion/styled';
+import { primeblue } from '../constants/styles';
 
 const RadioButton = styled.input`
+  position: relative;
   opacity: 0;
+  width: 40px;
+  height: 60px;
 `
 const Round = styled.div`
   position: absolute;
   min-width: 20px;
   min-height: 20px;
   border-radius: 50%;
-  background-color: #104987;
+  background-color: ${primeblue};
   visibility: hidden;
 `
 

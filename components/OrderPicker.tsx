@@ -1,18 +1,25 @@
 import styled from '@emotion/styled';
 import OrderPickBtn from './OrderPickBtn';
-
-const orders = [{value: 'asc', label: 'По возрастанию'}, {value: 'desc', label: 'По убыванию'}];
+import { useContext } from 'react';
+import { GameContext } from '../context/context';
 
 const OrderPickerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-const OrderPicker = () => {
+const OrderPicker = ({values, name}) => {
+  const gameContext = useContext(GameContext);
+  const handleRadio = (e) => {
+    if(e.target.name in gameContext) {
+      gameContext[e.target.name] = e.target.id;
+    }
+  }
   return(
-    <OrderPickerWrapper>
-      <OrderPickBtn id={'asc'} label={'По возрастанию'} className='' key={1}/>
-      <OrderPickBtn id={'desc'} label={'По убыванию'} className='' key={2}/>
+    <OrderPickerWrapper onClick={handleRadio}>
+      {values.map((val, ind)=>{
+        return <OrderPickBtn id={val.order} label={val.label} name={name} className='' key={ind}/>
+      })}
     </OrderPickerWrapper>
   )
 } 
