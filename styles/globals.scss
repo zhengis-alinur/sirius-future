@@ -2,14 +2,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Calibri;
 }
 
 a {
   display: inline-block;
   color: inherit;
   text-decoration: none;
+}
+
+p {
+  font-size: 32px;
+  font-weight: bold;
 }
 
 label, input {

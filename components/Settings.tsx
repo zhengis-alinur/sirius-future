@@ -18,24 +18,28 @@ const SettingsWrapper = styled.div`
   align-items: center;
   width: ${width}px;
   height: ${height}px;
-  margin: 60px auto;
+  margin: 30px auto;
   text-align: center;
   border-radius: 40px;
   background: linear-gradient(-135deg, ${lightblue}, ${darkblue});
 `
 const SettingsHolder = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: ${width-30}px;
   height: ${height-30}px;
   background-color: white;
   border-radius: 30px;
-  padding: 73px 80px 10px
+  padding: 20px 80px 30px
 `
 
 const Settings = () => {
   return(
   <SettingsWrapper>
     <SettingsHolder>
-      <Picker title='Количество предметов' values={amount} name='amount'/>
+      <Picker title='Кол-во предметов' values={amount} name='amount'/>
       <Picker title='Значения' values={ranges} name='ranges'/>
       <OrderPicker values={orders} name='order'/>
       <Link href={'/game'}>

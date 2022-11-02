@@ -14,8 +14,12 @@ const ItemStyled = styled(Item)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
+  font-size: 56px;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 3px #000000;
   background-image: url(${props => `/${assets[props.theme].name}/items/${assets[props.theme].items[Math.floor(Math.random()*4)]}`});
   background-size: contain;
   background-repeat: no-repeat;

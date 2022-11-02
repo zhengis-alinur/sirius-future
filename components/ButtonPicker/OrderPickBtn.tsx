@@ -28,9 +28,11 @@ const OrderPickBtn = styled(PickBtn)`
     justify-content: center;
     width: 270px;
     height: 45px;
+    font-size: 32px;
+    font-weight: bold;
     background-color: ${yellow};
-    opacity: 0.5;
     border-radius: 20px;
+    opacity: 0.5;
   }
 `
 

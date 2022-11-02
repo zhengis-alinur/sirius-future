@@ -4,7 +4,7 @@ import { primeblue } from '../../constants/styles';
 const RadioButton = styled.input`
   position: relative;
   opacity: 0;
-  width: 40px;
+  width: 80px;
   height: 60px;
 `
 const Round = styled.div`
@@ -33,6 +33,7 @@ const LabelStyled = styled(Label)`
   align-items:center;
   justify-content:end;
   gap: 3px;
+  font-size: 24px;
   input:checked + .round {
     visibility: visible;
   }
