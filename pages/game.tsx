@@ -9,7 +9,7 @@ const GameField = styled.div`
   display: flex;
 `
 
-const Game = () => {
+const Game = ({className}) => {
   const [theme, setTheme] = useState(0);
   const [itemValues, setItemValues] = useState([]);
 
@@ -26,19 +26,28 @@ const Game = () => {
   
   useEffect(() => {
     setItemValues(getRandomArray(amount, ranges))
-    return setTheme(Math.floor(Math.random() * (assets.length)))
+    setTheme(Math.floor(Math.random() * (assets.length)))
   }, [])
   
   return (
-    <>
+    <div className={className} style={{backgroundColor: assets[theme].backgroundColor}}>
       <GameField>
         {itemValues.map((val, ind) => {
           return <Item theme={theme} className='item' key={ind}>{val}</Item>
         })}
       </GameField>
       <PanelStyled theme={theme} amount={amount} className='panel'/>
-    </>
+    </div>
   )
 }
 
-export default Game
+const GameStyled = styled(Game)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  padding: 20px;
+`
+
+export default GameStyled
