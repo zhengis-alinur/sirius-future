@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import assets from '../constants/assets'
 import Item from '../components/Item'
-import { GameContext } from '../context/context'
+import { GameContext } from '../context'
 import styled from '@emotion/styled'
-import PanelStyled from '../components/Panel/Panel'
+import Panel from '../components/Panel'
 
 const GameField = styled.div`
   display: flex;
@@ -17,26 +17,27 @@ const Game = ({className}) => {
   const {amount, ranges} = gameContext;
   
   const getRandomArray = (amount, ranges) => {
-    const valSet = new Set();
-    while(valSet.size < amount) {
-      valSet.add(Math.floor(Math.random()*ranges));
+    const valueSet = new Set();
+    while(valueSet.size < amount) {
+      valueSet.add(Math.floor(Math.random()*ranges));
     }
-    return Array.from(valSet);
+    return Array.from(valueSet);
   }
   
   useEffect(() => {
+    const randomThemeId = Math.floor(Math.random() * (assets.length));
     setItemValues(getRandomArray(amount, ranges))
-    setTheme(Math.floor(Math.random() * (assets.length)))
+    setTheme(randomThemeId);
   }, [])
   
   return (
     <div className={className} style={{backgroundColor: assets[theme].backgroundColor}}>
       <GameField>
-        {itemValues.map((val, ind) => {
-          return <Item theme={theme} className='item' key={ind}>{val}</Item>
+        {itemValues.map((value, index) => {
+          return <Item theme={theme} className='item' key={index}>{value}</Item>
         })}
       </GameField>
-      <PanelStyled theme={theme} amount={amount} className='panel'/>
+      <Panel theme={theme} amount={amount} className='panel'/>
     </div>
   )
 }

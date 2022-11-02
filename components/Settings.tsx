@@ -1,16 +1,13 @@
 import styled from '@emotion/styled'
 import Link from 'next/link';
-import Picker from './RadioPicker/Picker';
-import OrderPicker from './ButtonPicker/OrderPicker';
+import Picker from './RadioPicker';
+import ButtonPicker from './ButtonPicker';
 import SFButton from './SFButton';
-import { darkblue, lightblue } from '../constants/styles';
+import { darkblue, lightblue } from '../styles/styles';
+import { amount, ranges, orders} from '../constants/configs';
 
-const width = 699;
+const width = 700;
 const height = 660;
-
-const amount = ['2','3','4','5',];
-const ranges = ['A','9','19','50','99','999',];
-const orders = [{order: 'asc', label: 'По возрастанию'}, {order: 'desc', label: 'По убыванию'}];
 
 const SettingsWrapper = styled.div`
   display: flex;
@@ -41,7 +38,7 @@ const Settings = () => {
     <SettingsHolder>
       <Picker title='Кол-во предметов' values={amount} name='amount'/>
       <Picker title='Значения' values={ranges} name='ranges'/>
-      <OrderPicker values={orders} name='order'/>
+      <ButtonPicker values={orders} name='order'/>
       <Link href={'/game'}>
         <SFButton >
           Играть

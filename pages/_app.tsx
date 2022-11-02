@@ -1,5 +1,5 @@
 import '../styles/globals.scss'
-import { GameContext, initialValues } from "../context/context"
+import { GameContext, initialValues } from "../context"
 
 function MyApp({ Component, pageProps }) {
   return (

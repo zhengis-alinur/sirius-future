@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { green } from '../constants/styles';
+import { green } from '../styles/styles';
 
 const SFButton = styled.div`
   display: flex;

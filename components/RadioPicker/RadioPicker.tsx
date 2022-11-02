@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import LabelStyled from './Label';
-import { yellow } from '../../constants/styles';
+import { yellow } from '../../styles/styles';
 import { useContext } from 'react';
-import { GameContext } from '../../context/context';
+import { GameContext } from '../../context';
 
-const PickerWrapper = styled.div`
+const RadioPickerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: ${yellow};
@@ -12,25 +12,23 @@ const PickerWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 50px;
 `
-const Picker = ({title, values, name}) => {
+const RadioPicker = ({title, values, name}) => {
   const gameContext = useContext(GameContext);
   const handleRadio = (e) => {
     if(e.target.name in gameContext) {
       gameContext[e.target.name] = e.target.id;
-      console.log(gameContext);
-
     }
   }
   return(
     <>
       <p>{title}</p>
-      <PickerWrapper onClick={handleRadio}>
+      <RadioPickerWrapper onClick={handleRadio}>
       {values.map(val => 
-        <LabelStyled id={val} key={val} name={name} className='styled_label'/>
+        <LabelStyled checked={val==gameContext[name]} id={val} key={val} name={name} className='styled_label'/>
         )}
-    </PickerWrapper>
+    </RadioPickerWrapper>
     </>
   )
 }
 
-export default Picker;
+export default RadioPicker;

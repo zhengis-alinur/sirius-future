@@ -4,7 +4,7 @@ import assets from '../constants/assets'
 
 const Item = ({children, className, theme}) => {
   return (
-    <div className={className}>
+    <div className={className} >
       {children}
     </div>
   )
@@ -20,7 +20,7 @@ const ItemStyled = styled(Item)`
   font-weight: bold;
   color: white;
   -webkit-text-stroke: 3px #000000;
-  background-image: url(${props => `/${assets[props.theme].name}/items/${assets[props.theme].items[Math.floor(Math.random()*4)]}`});
+  background-image: url(${props => `/${assets[props.theme].name}/items/${assets[props.theme].items[Math.floor(Math.random()*(assets[props.theme].items.length))]}`});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
