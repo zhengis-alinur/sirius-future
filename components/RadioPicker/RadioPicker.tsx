@@ -11,6 +11,9 @@ const RadioPickerWrapper = styled.div`
   max-height: 20px;
   border-radius: 10px;
   margin-bottom: 50px;
+  @media (max-width: 800px) {
+    width: 80%px;
+  }
 `
 const RadioPicker = ({title, values, name}) => {
   const gameContext = useContext(GameContext);

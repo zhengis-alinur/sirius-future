@@ -33,6 +33,10 @@ const OrderPickBtn = styled(PickBtn)`
     background-color: ${yellow};
     border-radius: 20px;
     opacity: 0.5;
+    @media (max-width: 800px) {
+      width: 120px;
+      font-size: 16px;
+    }
   }
 `
 

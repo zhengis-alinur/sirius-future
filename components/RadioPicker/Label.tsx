@@ -8,6 +8,9 @@ const RadioButton = styled.input`
   opacity: 0;
   width: 80px;
   height: 60px;
+  @media (max-width: 800px) {
+    width: 40px;
+  }
 `
 const Round = styled.div`
   position: absolute;

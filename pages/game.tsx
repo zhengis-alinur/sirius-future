@@ -10,6 +10,9 @@ import Placer from '../components/Panel/Placer';
 
 const GameField = styled.div`
   display: flex;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `
 
 const Game = ({className}) => {
@@ -36,7 +39,7 @@ const Game = ({className}) => {
     Array.from(valueSet).sort((a,b) => order === 'asc' ? a-b : b-a).map((value, index) => {
       const placer = <Placer key={index} id={index} className='placer'/>;
       PlacersArray.push(placer);
-      return DraggableObjectsArray.push(<DraggableObject pairedPlacer={placer} id={index} theme={theme} className='item' key={index}>{value}</DraggableObject>)
+      return DraggableObjectsArray.push(<DraggableObject id={index} theme={theme} className='item' key={index}>{value}</DraggableObject>)
     })
     setPlacers(PlacersArray);
     setDraggableObjects(shuffleArray(DraggableObjectsArray));
@@ -46,32 +49,23 @@ const Game = ({className}) => {
     const randomThemeId = Math.floor(Math.random() * (assets.length));
     configureGame(amount, ranges);
     return setTheme(randomThemeId);
-  }, [])
+  }, [theme])
   
   return (
-    <DragDropContext>
-      <div className={className} style={{backgroundColor: assets[theme].backgroundColor}}>
-        <Droppable droppableId='asd'>
-          {(provided, snapshot)=>{
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
-              <GameField>
-                {
-                  DraggableObjects
-                }
-              </GameField>
-            </div>
-            {provided.placeholder}
-          }}
-        </Droppable>
+      <div className={className} style={{
+        backgroundColor: assets[theme].backgroundColor,
+        backgroundImage: `url(/${assets[theme].name}/bg.png)`
+        }}>
+        <GameField>
+          {
+            DraggableObjects
+          }
+        </GameField>
         <p>{order=='asc' ? 'по возрастанию' : 'по убыванию'}</p>
         <Panel theme={theme} className='panel'>
           {Placers}
         </Panel>
       </div>
-    </DragDropContext>
   )
 }
 
@@ -82,6 +76,9 @@ const GameStyled = styled(Game)`
   justify-content: space-around;
   height: 100vh;
   padding: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 
 export default GameStyled

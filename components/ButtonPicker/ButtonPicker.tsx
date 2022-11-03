@@ -6,6 +6,7 @@ import { GameContext } from '../../context';
 const ButtonPickerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 `
 
 const ButtonPicker = ({values, name}) => {

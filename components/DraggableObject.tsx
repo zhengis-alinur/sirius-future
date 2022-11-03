@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import assets from '../constants/assets'
 
-const DraggableObject = ({id, children, className, theme, pairedPlacer}) => {
+const DraggableObject = ({id, children, className, theme}) => {
   return (
     <div className={className}>
       {children}
@@ -12,6 +12,7 @@ const DraggableObject = ({id, children, className, theme, pairedPlacer}) => {
 }
 
 const DraggableObjectStyled = styled(DraggableObject)`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +30,10 @@ const DraggableObjectStyled = styled(DraggableObject)`
   .id-holder {
     font-size: 12px;
     -webkit-text-stroke: 0px #000000;
+  }
+  @media (max-width: 800px) {
+    font-size: 27px;
+    -webkit-text-stroke: 1px #000000;
   }
 `
 

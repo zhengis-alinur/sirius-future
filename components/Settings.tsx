@@ -15,10 +15,13 @@ const SettingsWrapper = styled.div`
   align-items: center;
   width: ${width}px;
   height: ${height}px;
-  margin: 30px auto;
+  margin: 30px auto 30px;
   text-align: center;
   border-radius: 40px;
   background: linear-gradient(-135deg, ${lightblue}, ${darkblue});
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `
 const SettingsHolder = styled.div`
   display: flex;
@@ -29,7 +32,10 @@ const SettingsHolder = styled.div`
   height: ${height-30}px;
   background-color: white;
   border-radius: 30px;
-  padding: 20px 80px 30px
+  padding: 20px 80px 30px;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `
 
 const Settings = () => {
