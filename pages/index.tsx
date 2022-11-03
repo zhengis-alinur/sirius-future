@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect, useState } from "react";
 import Settings from "../components/Settings"
 
 const HomeWrapper = styled.div`
@@ -12,6 +13,10 @@ const HomeWrapper = styled.div`
 `
 
 export default function Home() {
+  const [audio, setAudio] = useState(null);
+  useEffect(() => {
+    setAudio(new Audio('/audio/background-audio.mp3'));
+  }, [])
   return (
     <HomeWrapper className="home">
       <Settings/>

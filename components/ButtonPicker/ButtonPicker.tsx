@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import OrderPickBtn from './ButtonPickerButton';
+import ButtonPickerButton from './ButtonPickerButton';
 import { useContext } from 'react';
 import { GameContext } from '../../context';
 
@@ -19,7 +19,7 @@ const ButtonPicker = ({values, name}) => {
   return(
     <ButtonPickerWrapper onClick={handleRadio}>
       {values.map((val, ind)=>{
-        return <OrderPickBtn id={val.order} label={val.label} name={name} className='' key={ind}/>
+        return <ButtonPickerButton checked={gameContext.order == val.order} id={val.order} label={val.label} name={name} className='' key={ind}/>
       })}
     </ButtonPickerWrapper>
   )

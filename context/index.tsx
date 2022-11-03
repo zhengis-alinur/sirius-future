@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 export const initialValues = {
-  amount: 5,
-  ranges: 19,
+  amount: 2,
+  ranges: 'A',
   order: 'asc',
 }
 

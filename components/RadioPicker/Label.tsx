@@ -25,7 +25,7 @@ const Label = ({id, name, className, checked}) => {
   return(
     <div className={className}>
       <label htmlFor={id}>{id}</label>
-      <RadioButton type='radio' name={name} id={id} checked={checked}/>
+      <RadioButton type='radio' name={name} id={id} defaultChecked={checked}/>
       <Round className='round'/>
     </div>
   )

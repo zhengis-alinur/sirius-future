@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import { yellow } from '../../styles/styles';
 
-const PickBtn = ({id, label, className, name}) => {
+const ButtonPickerButton = ({id, label, className, name, checked}) => {
   return(
     <div className={className}>
-      <input type="radio" name={name} id={id}/>
+      <input type="radio" name={name} id={id} defaultChecked={checked}/>
       <label htmlFor={id}>{label}</label>
     </div>
   )
 }
 
-const OrderPickBtn = styled(PickBtn)`
+const ButtonPickerButtonStyled = styled(ButtonPickerButton)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -40,4 +40,4 @@ const OrderPickBtn = styled(PickBtn)`
   }
 `
 
-export default OrderPickBtn;
+export default ButtonPickerButtonStyled;

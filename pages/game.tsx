@@ -7,6 +7,7 @@ import DraggableObject from '../components/DraggableObject'
 import { GameContext } from '../context'
 import Panel from '../components/Panel'
 import Placer from '../components/Panel/Placer';
+import { letters } from '../constants/configs';
 
 const GameField = styled.div`
   display: flex;
@@ -29,14 +30,24 @@ const Game = ({className}) => {
     
   const configureGame = (amount, ranges) => {
     const valueSet = new Set();
+    let sortedSet = [];
     const DraggableObjectsArray = [];
     const PlacersArray = [];
+
+    if(ranges === 'A') {
+      while(valueSet.size < amount) {
+        valueSet.add(letters[Math.floor(Math.random()*letters.length)]);
+      }
+      sortedSet = Array.from(valueSet).sort((a,b) => order === 'asc' ? String(a).charCodeAt(0)-String(b).charCodeAt(0) : String(b).charCodeAt(0)-String(a).charCodeAt(0));
+    }
 
     while(valueSet.size < amount) {
       valueSet.add(Math.floor(Math.random()*ranges));
     }
 
-    Array.from(valueSet).sort((a,b) => order === 'asc' ? a-b : b-a).map((value, index) => {
+    sortedSet = Array.from(valueSet).sort((a,b) => order === 'asc' ? a-b : b-a);
+
+    sortedSet.map((value, index) => {
       const placer = <Placer key={index} id={index} className='placer'/>;
       PlacersArray.push(placer);
       return DraggableObjectsArray.push(<DraggableObject id={index} theme={theme} className='item' key={index}>{value}</DraggableObject>)
