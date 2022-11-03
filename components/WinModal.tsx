@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import SFButton from "./SFButton";
+
+interface Props {
+  className: string;
+  reload: MouseEventHandler<HTMLButtonElement>;
+}
 
 const WinModalCover = styled.div`
   position: absolute;
@@ -13,7 +17,7 @@ const WinModalCover = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-const WinModal = ({ className, reload }) => {
+const WinModal: React.FC<Props> = ({ className, reload }) => {
   return (
     <WinModalCover>
       <div className={className}>

@@ -9,7 +9,15 @@ const ButtonPickerWrapper = styled.div`
   gap: 30px;
 `;
 
-const ButtonPicker = ({ values, name }) => {
+interface Props {
+  values: {
+    order: string;
+    label: string;
+  }[];
+  name: string;
+}
+
+const ButtonPicker: React.FC<Props> = ({ values, name }) => {
   const gameContext = useContext(GameContext);
   const handleRadio = (e) => {
     if (e.target.name in gameContext) {

@@ -3,7 +3,12 @@ import React, { useContext } from "react";
 import { GameContext } from "../context";
 import Image from "next/image";
 
-const OrderLabel = ({ label, className }) => {
+interface Props {
+  label: string;
+  className: string;
+}
+
+const OrderArrow: React.FC<Props> = ({ label, className }) => {
   const gameContext = useContext(GameContext);
   return (
     <div className={className}>
@@ -23,7 +28,7 @@ const OrderLabel = ({ label, className }) => {
   );
 };
 
-const OrderLabelStyled = styled(OrderLabel)`
+const OrderArrowStyled = styled(OrderArrow)`
   position: relative;
   display: flex;
   align-items: center;
@@ -44,4 +49,4 @@ const OrderLabelStyled = styled(OrderLabel)`
   }
 `;
 
-export default OrderLabelStyled;
+export default OrderArrowStyled;

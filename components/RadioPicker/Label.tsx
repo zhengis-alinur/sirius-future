@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
 import { primeblue } from "../../styles/styles";
-import { GameContext } from "../../context";
 
 const RadioButton = styled.input`
   position: relative;
@@ -21,7 +19,14 @@ const Round = styled.div`
   visibility: hidden;
 `;
 
-const Label = ({ id, name, className, checked }) => {
+interface Props {
+  id: string;
+  name: string;
+  className: string;
+  checked: boolean;
+}
+
+const Label: React.FC<Props> = ({ id, name, className, checked }) => {
   return (
     <div className={className}>
       <label htmlFor={id}>{id}</label>

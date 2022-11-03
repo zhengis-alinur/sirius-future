@@ -1,7 +1,21 @@
 import styled from "@emotion/styled";
 import { yellow } from "../../styles/styles";
 
-const ButtonPickerButton = ({ id, label, className, name, checked }) => {
+interface Props {
+  id: string;
+  label: string;
+  className: string;
+  name: string;
+  checked: boolean;
+}
+
+const ButtonPickerButton: React.FC<Props> = ({
+  id,
+  label,
+  className,
+  name,
+  checked,
+}) => {
   return (
     <div className={className}>
       <input type='radio' name={name} id={id} defaultChecked={checked} />

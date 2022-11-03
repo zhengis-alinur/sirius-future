@@ -4,6 +4,12 @@ import { yellow } from "../../styles/styles";
 import { useContext } from "react";
 import { GameContext } from "../../context";
 
+interface Props {
+  title: string;
+  values: string[];
+  name: string;
+}
+
 const RadioPickerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -15,7 +21,7 @@ const RadioPickerWrapper = styled.div`
     width: 80%px;
   }
 `;
-const RadioPicker = ({ title, values, name }) => {
+const RadioPicker: React.FC<Props> = ({ title, values, name }) => {
   const gameContext = useContext(GameContext);
   const handleRadio = (e) => {
     if (e.target.name in gameContext) {
@@ -32,7 +38,7 @@ const RadioPicker = ({ title, values, name }) => {
             id={value}
             key={value}
             name={name}
-            className='styled_label'
+            className='styled-label'
           />
         ))}
       </RadioPickerWrapper>

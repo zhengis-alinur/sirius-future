@@ -1,7 +1,12 @@
 import "../styles/globals.scss";
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { GameContext, initialValues } from "../context";
 import useSound from "use-sound";
+
+interface Props {
+  Component: ReactNode;
+  pageProps: ReactNode[];
+}
 
 function MyApp({ Component, pageProps }) {
   // const [playBackgroundSound] = useSound('/audio/background.mp3');

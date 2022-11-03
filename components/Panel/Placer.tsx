@@ -2,9 +2,14 @@ import styled from "@emotion/styled";
 import React from "react";
 import { DropTarget } from "react-drag-drop-container";
 
-const Placer = ({ id, className }) => {
+interface Props {
+  id: number;
+  className: string;
+}
+
+const Placer: React.FC<Props> = ({ id, className }) => {
   return (
-    <DropTarget id='my_target' targetKey={id}>
+    <DropTarget id='placer' targetKey={id}>
       <div className={className}>{id}</div>
     </DropTarget>
   );

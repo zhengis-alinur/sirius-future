@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
-
 import assets from "../constants/assets";
 import DraggableObject from "../components/DraggableObject";
 import { GameContext } from "../context";
@@ -9,7 +7,6 @@ import Panel from "../components/Panel";
 import Placer from "../components/Panel/Placer";
 import { letters } from "../constants/configs";
 import WinModalStyled from "../components/WinModal";
-import OrderLabel from "../components/OrderLabel";
 
 const GameField = styled.div`
   display: flex;
@@ -18,11 +15,15 @@ const GameField = styled.div`
   }
 `;
 
-const Game = ({ className }) => {
+interface Props {
+  className: string;
+}
+
+const Game: React.FC<Props> = ({ className }) => {
   const [theme, setTheme] = useState(0);
   const [DraggableObjects, setDraggableObjects] = useState([]);
   const [Placers, setPlacers] = useState([]);
-  const [win, setwin] = useState(false);
+  const [win, setWin] = useState(false);
 
   const gameContext = useContext(GameContext);
   const { amount, ranges, order } = gameContext;
@@ -30,7 +31,7 @@ const Game = ({ className }) => {
   const onDraggableDropHandler = () => {
     gameContext.matches++;
     if (gameContext.matches == amount) {
-      setwin(true);
+      setWin(true);
     }
   };
 
@@ -68,7 +69,7 @@ const Game = ({ className }) => {
           theme={theme}
           className='item'
           key={index}
-          onDrop={onDraggableDropHandler}
+          onDropHandle={onDraggableDropHandler}
         >
           {value}
         </DraggableObject>
@@ -80,7 +81,7 @@ const Game = ({ className }) => {
 
   const reloadGame = () => {
     location.replace("/");
-    setwin(false);
+    setWin(false);
   };
 
   useEffect(() => {

@@ -1,28 +1,43 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import assets from "../constants/assets";
 import { DragDropContainer } from "react-drag-drop-container";
 import useSound from "use-sound";
+interface Props {
+  id: number;
+  children: ReactNode;
+  className: string;
+  theme: number;
+  onDropHandle: Function;
+}
 
-const DraggableObject = ({ id, children, className, theme, onDrop }) => {
+const DraggableObject: React.FC<Props> = ({
+  id,
+  children,
+  className,
+  theme,
+  onDropHandle,
+}) => {
   const [noDragging, setNoDragging] = useState(false);
   const [playSuccessSound] = useSound("/audio/success.mp3");
 
   return (
-    <DragDropContainer
-      targetKey={id}
-      noDragging={noDragging}
-      onDrop={(e) => {
-        setNoDragging(true);
-        playSuccessSound();
-        onDrop();
-      }}
-    >
-      <div className={className}>
-        {children}
-        <p className='id-holder'>id-{id}</p>
-      </div>
-    </DragDropContainer>
+    <div className='draggable'>
+      <DragDropContainer
+        targetKey={id}
+        noDragging={noDragging}
+        onDrop={(e) => {
+          setNoDragging(true);
+          playSuccessSound();
+          onDropHandle();
+        }}
+      >
+        <div className={className}>
+          {children}
+          <p className='id-holder'>id-{id}</p>
+        </div>
+      </DragDropContainer>
+    </div>
   );
 };
 

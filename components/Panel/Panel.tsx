@@ -1,16 +1,23 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { ReactNode } from "react";
 import assets from "../../constants/assets";
-import OrderLabel from "../OrderLabel";
+import OrderArrow from "../OrderArrow";
 
-const Panel = ({ className, theme, children, order }) => {
+interface Props {
+  className: string;
+  theme: number;
+  children: ReactNode;
+  order: string;
+}
+
+const Panel: React.FC<Props> = ({ className, theme, children, order }) => {
   return (
     <div className={className}>
-      <OrderLabel
+      <OrderArrow
         className='OrderLabel'
         label={order == "asc" ? "По возрастанию" : "По убыванию"}
       />
-      <div className='placers_holder'>{children}</div>
+      <div className='placers-holder'>{children}</div>
     </div>
   );
 };
@@ -20,7 +27,7 @@ const PanelStyled = styled(Panel)`
   flex-direction: column;
   align-items: center;
   width: 90%;
-  .placers_holder {
+  .placers-holder {
     display: flex;
     justify-content: space-around;
     align-items: center;
