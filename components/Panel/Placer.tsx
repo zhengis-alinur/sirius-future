@@ -1,9 +1,15 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import {DropTarget} from 'react-drag-drop-container';
 
 const Placer = ({id, className}) => {
   return (
-    <div className={className}>{id}</div>
+    <DropTarget
+          id="my_target"
+          targetKey={id}
+        >
+      <div className={className}>{id}</div>
+    </DropTarget>
   )
 }
 

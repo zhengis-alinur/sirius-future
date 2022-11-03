@@ -4,7 +4,11 @@ import { GameContext, initialValues } from "../context"
 function MyApp({ Component, pageProps }) {
   return (
     <GameContext.Provider value={initialValues}>
-          <Component {...pageProps} />
+      <audio
+        autoPlay={true}
+        src="/audio/background.mp3">
+      </audio>
+      <Component {...pageProps} />
     </GameContext.Provider>
   )
 }

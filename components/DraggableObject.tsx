@@ -1,13 +1,31 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import assets from '../constants/assets'
+import {DragDropContainer} from 'react-drag-drop-container';
+import useSound from 'use-sound';
 
-const DraggableObject = ({id, children, className, theme}) => {
+const DraggableObject = ({id, children, className, theme, onDrop}) => {
+  const [noDragging, setNoDragging] = useState(false);
+  const [playSuccessSound] = useSound('/audio/success.mp3');
+
   return (
-    <div className={className}>
-      {children}
-      <p className='id-holder'>id-{id}</p>
-    </div>
+    <DragDropContainer
+      targetKey={id}
+      noDragging={noDragging}
+      onDrop={
+        (e) => {
+          setNoDragging(true);
+          playSuccessSound();
+          onDrop();
+        }
+      }
+
+    >
+      <div className={className}>
+        {children}
+        <p className='id-holder'>id-{id}</p>
+      </div>
+    </DragDropContainer>
   )
 }
 

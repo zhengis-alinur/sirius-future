@@ -8,6 +8,7 @@ import { GameContext } from '../context'
 import Panel from '../components/Panel'
 import Placer from '../components/Panel/Placer';
 import { letters } from '../constants/configs';
+import WinModalStyled from '../components/WinModal';
 
 const GameField = styled.div`
   display: flex;
@@ -20,13 +21,21 @@ const Game = ({className}) => {
   const [theme, setTheme] = useState(0);
   const [DraggableObjects, setDraggableObjects] = useState([]);
   const [Placers, setPlacers] = useState([]);
+  const [win, setwin] = useState(false)
 
   const gameContext = useContext(GameContext);
   const {amount, ranges, order} = gameContext;
-  
-    const shuffleArray = (array) => {
-      return array.sort(() => Math.random() - 0.5);
+
+  const onDraggableDropHandler = () => {
+    gameContext.matches++;
+    if(gameContext.matches == amount) {
+      setwin(true);
     }
+  }
+
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  }
     
   const configureGame = (amount, ranges) => {
     const valueSet = new Set();
@@ -38,22 +47,27 @@ const Game = ({className}) => {
       while(valueSet.size < amount) {
         valueSet.add(letters[Math.floor(Math.random()*letters.length)]);
       }
-      sortedSet = Array.from(valueSet).sort((a,b) => order === 'asc' ? String(a).charCodeAt(0)-String(b).charCodeAt(0) : String(b).charCodeAt(0)-String(a).charCodeAt(0));
+      sortedSet = Array.from(valueSet).sort((a,b) =>String(a).charCodeAt(0)-String(b).charCodeAt(0));
     }
 
     while(valueSet.size < amount) {
       valueSet.add(Math.floor(Math.random()*ranges));
     }
 
-    sortedSet = Array.from(valueSet).sort((a,b) => order === 'asc' ? a-b : b-a);
+    sortedSet = Array.from(valueSet).sort((a,b) =>a-b);
 
     sortedSet.map((value, index) => {
       const placer = <Placer key={index} id={index} className='placer'/>;
       PlacersArray.push(placer);
-      return DraggableObjectsArray.push(<DraggableObject id={index} theme={theme} className='item' key={index}>{value}</DraggableObject>)
+      return DraggableObjectsArray.push(<DraggableObject id={index} theme={theme} className='item' key={index} onDrop={onDraggableDropHandler}>{value}</DraggableObject>)
     })
     setPlacers(PlacersArray);
     setDraggableObjects(shuffleArray(DraggableObjectsArray));
+  }
+
+  const reloadGame = () => {
+    location.reload();
+    setwin(false);
   }
 
   useEffect(() => {
@@ -62,6 +76,7 @@ const Game = ({className}) => {
     return setTheme(randomThemeId);
   }, [theme])
   
+
   return (
       <div className={className} style={{
         backgroundColor: assets[theme].backgroundColor,
@@ -76,6 +91,9 @@ const Game = ({className}) => {
         <Panel theme={theme} className='panel'>
           {Placers}
         </Panel>
+        {
+          win ? <WinModalStyled reload={reloadGame} className='winModal'/> : '' 
+        }
       </div>
   )
 }

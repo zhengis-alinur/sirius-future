@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
-import { url } from 'inspector'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import assets from '../../constants/assets'
-import Placer from './Placer'
 
 const Panel = ({className, theme, children}) => {
   return (
