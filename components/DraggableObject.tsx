@@ -1,18 +1,13 @@
 import styled from '@emotion/styled'
-import React, {ReactDOM} from 'react'
+import React from 'react'
 import assets from '../constants/assets'
-import Draggable from 'react-draggable'
 
 const DraggableObject = ({id, children, className, theme, pairedPlacer}) => {
-  const dragHandler = (e, position) => {
-  }
   return (
-    <Draggable>
-      <div className={className}>
-        {children}
-        <p className='id-holder'>id-{id}</p>
-      </div>
-    </Draggable>
+    <div className={className}>
+      {children}
+      <p className='id-holder'>id-{id}</p>
+    </div>
   )
 }
 

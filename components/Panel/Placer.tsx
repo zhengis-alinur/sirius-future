@@ -3,7 +3,7 @@ import React from 'react'
 
 const Placer = ({id, className}) => {
   return (
-    <div className={className}>id-{id}</div>
+    <div className={className}>{id}</div>
   )
 }
 

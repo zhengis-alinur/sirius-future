@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
+import styled from '@emotion/styled'
+import {Draggable, Droppable, DragDropContext} from 'react-beautiful-dnd';
+
 import assets from '../constants/assets'
 import DraggableObject from '../components/DraggableObject'
 import { GameContext } from '../context'
-import styled from '@emotion/styled'
 import Panel from '../components/Panel'
 import Placer from '../components/Panel/Placer';
+
 const GameField = styled.div`
   display: flex;
 `
@@ -46,17 +49,29 @@ const Game = ({className}) => {
   }, [])
   
   return (
-    <div className={className} style={{backgroundColor: assets[theme].backgroundColor}}>
-      <GameField>
-        {
-          DraggableObjects
-        }
-      </GameField>
-      <p>{order == 'asc' ? 'по возрастанию' : 'по убыванию'}</p>
-      <Panel theme={theme} className='panel'>
-        {Placers}
-      </Panel>
-    </div>
+    <DragDropContext>
+      <div className={className} style={{backgroundColor: assets[theme].backgroundColor}}>
+        <Droppable droppableId='asd'>
+          {(provided, snapshot)=>{
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              <GameField>
+                {
+                  DraggableObjects
+                }
+              </GameField>
+            </div>
+            {provided.placeholder}
+          }}
+        </Droppable>
+        <p>{order=='asc' ? 'по возрастанию' : 'по убыванию'}</p>
+        <Panel theme={theme} className='panel'>
+          {Placers}
+        </Panel>
+      </div>
+    </DragDropContext>
   )
 }
 
