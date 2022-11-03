@@ -5,7 +5,6 @@ import ButtonPicker from './ButtonPicker';
 import SFButton from './SFButton';
 import { darkblue, lightblue } from '../styles/styles';
 import { amount, ranges, orders} from '../constants/configs';
-import { useEffect } from 'react';
 
 const width = 700;
 const height = 660;

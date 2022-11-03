@@ -43,6 +43,9 @@ const WinModalStyled = styled(WinModal)`
     width: 40%;
   }
   z-index: 1000;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `
 
 export default WinModalStyled

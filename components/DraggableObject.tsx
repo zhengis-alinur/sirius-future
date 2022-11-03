@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import assets from '../constants/assets'
 import {DragDropContainer} from 'react-drag-drop-container';
 import useSound from 'use-sound';

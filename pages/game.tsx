@@ -9,6 +9,7 @@ import Panel from '../components/Panel'
 import Placer from '../components/Panel/Placer';
 import { letters } from '../constants/configs';
 import WinModalStyled from '../components/WinModal';
+import OrderLabel from '../components/OrderLabel';
 
 const GameField = styled.div`
   display: flex;
@@ -66,7 +67,7 @@ const Game = ({className}) => {
   }
 
   const reloadGame = () => {
-    location.reload();
+    location.replace('/');
     setwin(false);
   }
 
@@ -87,8 +88,7 @@ const Game = ({className}) => {
             DraggableObjects
           }
         </GameField>
-        <p>{order=='asc' ? 'по возрастанию' : 'по убыванию'}</p>
-        <Panel theme={theme} className='panel'>
+        <Panel theme={theme} order={order} className='panel'>
           {Placers}
         </Panel>
         {
