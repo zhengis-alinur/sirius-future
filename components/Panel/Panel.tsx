@@ -4,13 +4,10 @@ import React, { useEffect, useState } from 'react'
 import assets from '../../constants/assets'
 import Placer from './Placer'
 
-const Panel = ({className, theme, amount}) => {
-  const [placers, setPlacers] = useState([]);
+const Panel = ({className, theme, children}) => {
   return (
     <div className={className}>
-      {
-        Array(amount).fill('').map((element, index) => {return <Placer key={index}/>})
-      }
+      {children}
     </div>
     )
   }
