@@ -32,10 +32,7 @@ const DraggableObject: React.FC<Props> = ({
           onDropHandle();
         }}
       >
-        <div className={className}>
-          {children}
-          <p className='id-holder'>id-{id}</p>
-        </div>
+        <div className={className}>{children}</div>
       </DragDropContainer>
     </div>
   );
@@ -62,10 +59,6 @@ const DraggableObjectStyled = styled(DraggableObject)`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  .id-holder {
-    font-size: 12px;
-    -webkit-text-stroke: 0px #000000;
-  }
   @media (max-width: 800px) {
     font-size: 27px;
     -webkit-text-stroke: 1px #000000;

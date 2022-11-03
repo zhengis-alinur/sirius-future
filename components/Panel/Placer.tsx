@@ -10,7 +10,7 @@ interface Props {
 const Placer: React.FC<Props> = ({ id, className }) => {
   return (
     <DropTarget id='placer' targetKey={id}>
-      <div className={className}>{id}</div>
+      <div className={className} />
     </DropTarget>
   );
 };
