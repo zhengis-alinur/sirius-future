@@ -1,33 +1,30 @@
-import styled from '@emotion/styled'
-import React, { useState } from 'react'
-import assets from '../constants/assets'
-import {DragDropContainer} from 'react-drag-drop-container';
-import useSound from 'use-sound';
+import styled from "@emotion/styled";
+import React, { useState } from "react";
+import assets from "../constants/assets";
+import { DragDropContainer } from "react-drag-drop-container";
+import useSound from "use-sound";
 
-const DraggableObject = ({id, children, className, theme, onDrop}) => {
+const DraggableObject = ({ id, children, className, theme, onDrop }) => {
   const [noDragging, setNoDragging] = useState(false);
-  const [playSuccessSound] = useSound('/audio/success.mp3');
+  const [playSuccessSound] = useSound("/audio/success.mp3");
 
   return (
     <DragDropContainer
       targetKey={id}
       noDragging={noDragging}
-      onDrop={
-        (e) => {
-          setNoDragging(true);
-          playSuccessSound();
-          onDrop();
-        }
-      }
-
+      onDrop={(e) => {
+        setNoDragging(true);
+        playSuccessSound();
+        onDrop();
+      }}
     >
       <div className={className}>
         {children}
         <p className='id-holder'>id-{id}</p>
       </div>
     </DragDropContainer>
-  )
-}
+  );
+};
 
 const DraggableObjectStyled = styled(DraggableObject)`
   position: relative;
@@ -41,7 +38,12 @@ const DraggableObjectStyled = styled(DraggableObject)`
   color: white;
   cursor: pointer;
   -webkit-text-stroke: 3px #000000;
-  background-image: url(${props => `/${assets[props.theme].name}/items/${assets[props.theme].items[Math.floor(Math.random()*(assets[props.theme].items.length))]}`});
+  background-image: url(${(props) =>
+    `/${assets[props.theme].name}/items/${
+      assets[props.theme].items[
+        Math.floor(Math.random() * assets[props.theme].items.length)
+      ]
+    }`});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -53,6 +55,6 @@ const DraggableObjectStyled = styled(DraggableObject)`
     font-size: 27px;
     -webkit-text-stroke: 1px #000000;
   }
-`
+`;
 
 export default DraggableObjectStyled;

@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { useContext } from 'react';
-import { primeblue } from '../../styles/styles';
-import { GameContext } from '../../context';
+import styled from "@emotion/styled";
+import { useContext } from "react";
+import { primeblue } from "../../styles/styles";
+import { GameContext } from "../../context";
 
 const RadioButton = styled.input`
   position: relative;
@@ -11,7 +11,7 @@ const RadioButton = styled.input`
   @media (max-width: 800px) {
     width: 40px;
   }
-`
+`;
 const Round = styled.div`
   position: absolute;
   min-width: 20px;
@@ -19,28 +19,28 @@ const Round = styled.div`
   border-radius: 50%;
   background-color: ${primeblue};
   visibility: hidden;
-`
+`;
 
-const Label = ({id, name, className, checked}) => {
-  return(
+const Label = ({ id, name, className, checked }) => {
+  return (
     <div className={className}>
       <label htmlFor={id}>{id}</label>
-      <RadioButton type='radio' name={name} id={id} defaultChecked={checked}/>
-      <Round className='round'/>
+      <RadioButton type='radio' name={name} id={id} defaultChecked={checked} />
+      <Round className='round' />
     </div>
-  )
-}
+  );
+};
 
 const LabelStyled = styled(Label)`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  justify-content:end;
+  align-items: center;
+  justify-content: end;
   gap: 3px;
   font-size: 24px;
   input:checked + .round {
     visibility: visible;
   }
-`
+`;
 export default LabelStyled;

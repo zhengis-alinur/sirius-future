@@ -1,25 +1,27 @@
-import styled from '@emotion/styled'
-import React, { useContext } from 'react'
-import { GameContext } from '../context'
-import Image from 'next/image'
+import styled from "@emotion/styled";
+import React, { useContext } from "react";
+import { GameContext } from "../context";
+import Image from "next/image";
 
-const OrderLabel = ({label, className}) => {
-  const gameContext = useContext(GameContext)
+const OrderLabel = ({ label, className }) => {
+  const gameContext = useContext(GameContext);
   return (
     <div className={className}>
-      <Image 
-        src={gameContext.order == 'asc' ? '/OrderLabel-r.png' : '/OrderLabel-l.png'} 
-        alt={''} 
-        width={360} 
+      <Image
+        src={
+          gameContext.order == "asc" ? "/OrderLabel-r.png" : "/OrderLabel-l.png"
+        }
+        alt={""}
+        width={360}
         height={70}
         style={{
-          left: `${gameContext.order == 'asc' ? '0' : '-100px'}`,
+          left: `${gameContext.order == "asc" ? "0" : "-100px"}`,
         }}
       />
       <p>{label}</p>
     </div>
-  )
-}
+  );
+};
 
 const OrderLabelStyled = styled(OrderLabel)`
   position: relative;
@@ -36,10 +38,10 @@ const OrderLabelStyled = styled(OrderLabel)`
     position: absolute;
   }
   @media (max-width: 800px) {
-    img{
+    img {
       display: none;
     }
   }
-`
+`;
 
 export default OrderLabelStyled;

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled"
-import Settings from "../components/Settings"
+import styled from "@emotion/styled";
+import Settings from "../components/Settings";
 const HomeWrapper = styled.div`
   position: absolute;
   width: 100vw;
@@ -8,12 +8,12 @@ const HomeWrapper = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-`
+`;
 
 export default function Home() {
   return (
-    <HomeWrapper className="home">
-      <Settings/>
+    <HomeWrapper className='home'>
+      <Settings />
     </HomeWrapper>
-  )
+  );
 }

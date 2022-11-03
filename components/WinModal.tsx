@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import Link from 'next/link'
-import React from 'react'
-import SFButton from './SFButton'
+import styled from "@emotion/styled";
+import Link from "next/link";
+import React from "react";
+import SFButton from "./SFButton";
 
 const WinModalCover = styled.div`
   position: absolute;
@@ -10,19 +10,21 @@ const WinModalCover = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.7);
-`
+  background-color: rgba(0, 0, 0, 0.7);
+`;
 
-const WinModal = ({className, reload}) => {
+const WinModal = ({ className, reload }) => {
   return (
     <WinModalCover>
       <div className={className}>
         <p>Молодец! Ты успешно справился с заданием!</p>
-          <SFButton style={{marginTop: 0}} onClick={reload}>Заново</SFButton>
+        <SFButton style={{ marginTop: 0 }} onClick={reload}>
+          Заново
+        </SFButton>
       </div>
     </WinModalCover>
-  )
-}
+  );
+};
 
 const WinModalStyled = styled(WinModal)`
   display: flex;
@@ -46,6 +48,6 @@ const WinModalStyled = styled(WinModal)`
   @media (max-width: 800px) {
     width: 90%;
   }
-`
+`;
 
-export default WinModalStyled
+export default WinModalStyled;

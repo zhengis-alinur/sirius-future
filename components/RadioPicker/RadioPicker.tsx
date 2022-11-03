@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-import LabelStyled from './Label';
-import { yellow } from '../../styles/styles';
-import { useContext } from 'react';
-import { GameContext } from '../../context';
+import styled from "@emotion/styled";
+import LabelStyled from "./Label";
+import { yellow } from "../../styles/styles";
+import { useContext } from "react";
+import { GameContext } from "../../context";
 
 const RadioPickerWrapper = styled.div`
   display: flex;
@@ -14,24 +14,30 @@ const RadioPickerWrapper = styled.div`
   @media (max-width: 800px) {
     width: 80%px;
   }
-`
-const RadioPicker = ({title, values, name}) => {
+`;
+const RadioPicker = ({ title, values, name }) => {
   const gameContext = useContext(GameContext);
   const handleRadio = (e) => {
-    if(e.target.name in gameContext) {
+    if (e.target.name in gameContext) {
       gameContext[e.target.name] = e.target.id;
     }
-  }
-  return(
+  };
+  return (
     <>
       <p>{title}</p>
       <RadioPickerWrapper onClick={handleRadio}>
-      {values.map(val => 
-        <LabelStyled checked={val==gameContext[name]} id={val} key={val} name={name} className='styled_label'/>
-        )}
-    </RadioPickerWrapper>
+        {values.map((value) => (
+          <LabelStyled
+            checked={value == gameContext[name]}
+            id={value}
+            key={value}
+            name={name}
+            className='styled_label'
+          />
+        ))}
+      </RadioPickerWrapper>
     </>
-  )
-}
+  );
+};
 
 export default RadioPicker;

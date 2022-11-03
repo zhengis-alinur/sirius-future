@@ -1,14 +1,14 @@
-import styled from '@emotion/styled';
-import { yellow } from '../../styles/styles';
+import styled from "@emotion/styled";
+import { yellow } from "../../styles/styles";
 
-const ButtonPickerButton = ({id, label, className, name, checked}) => {
-  return(
+const ButtonPickerButton = ({ id, label, className, name, checked }) => {
+  return (
     <div className={className}>
-      <input type="radio" name={name} id={id} defaultChecked={checked}/>
+      <input type='radio' name={name} id={id} defaultChecked={checked} />
       <label htmlFor={id}>{label}</label>
     </div>
-  )
-}
+  );
+};
 
 const ButtonPickerButtonStyled = styled(ButtonPickerButton)`
   display: flex;
@@ -20,7 +20,7 @@ const ButtonPickerButtonStyled = styled(ButtonPickerButton)`
     opacity: 0;
   }
   input:checked + label {
-    opacity: 1
+    opacity: 1;
   }
   label {
     display: flex;
@@ -38,6 +38,6 @@ const ButtonPickerButtonStyled = styled(ButtonPickerButton)`
       font-size: 16px;
     }
   }
-`
+`;
 
 export default ButtonPickerButtonStyled;
