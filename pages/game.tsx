@@ -7,6 +7,7 @@ import Panel from "../components/Panel";
 import Placer from "../components/Panel/Placer";
 import { letters } from "../constants/configs";
 import WinModalStyled from "../components/WinModal";
+import { extendedRanges } from "../constants/configs";
 
 const GameField = styled.div`
   display: flex;
@@ -52,10 +53,12 @@ const Game: React.FC<Props> = ({ className }) => {
       sortedSet = Array.from(valueSet).sort(
         (a, b) => String(a).charCodeAt(0) - String(b).charCodeAt(0)
       );
-    }
-
-    while (valueSet.size < amount) {
-      valueSet.add(Math.floor(Math.random() * ranges));
+    } else {
+      const min = extendedRanges[ranges][0];
+      const max = extendedRanges[ranges][1];
+      while (valueSet.size < amount) {
+        valueSet.add(min + Math.floor(Math.random() * (max - min + 1)));
+      }
     }
 
     sortedSet = Array.from(valueSet).sort((a, b) => a - b);
